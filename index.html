@@ -1,1 +1,397 @@
-Hello Worldsssioio
+Project Overview
+
+We are developing our web application using Javascript technologies, React js, and Node js. Our core application development is already done and now we are working on enhancing existing features and accommodating change requests. Bracesondemand is a web application mainly designed for the 3D printer company Formlabs but after the successful integration with one printer company, we are now on verge of integration with another big 3D printer company named as SprintRay. Our main agenda is now to generalize our platform as much as possible so that new integrations require less and less development. Right now we are using Kanban to manage our development. 
+
+Project Details:
+
+We have a public web app and a private web app for Bracesondemand. The public app is just a CMS and is being used to showcase what Bracesondemand is offering. It also links users to the private app where the actual magic happens. The private app requires signup and login in order to use it. Doctors can have
+
+Project Environments:
+
+We have staging and production environments for both, private and public applications. 
+
+ Table Of Contents
+
+The structure of the repository is as shown below:
+
+Topic
+
+ Team
+
+ Onboarding
+
+Development Process
+
+Architecture
+
+Code Review Process
+
+Release and Deployment
+
+Team
+
+We are a team of 6-8 people. Our main area of expertise is development, testing, and deployment. A brief introduction is as follows. 
+
+Development: Faisal Imran, Hamza Mukhtar, Hamza Malik, Haseeb Ahmad, Muhammad Ismail,  
+
+
+
+ New Developer Onboarding
+
+Screens
+
+Description
+
+Engineering Team Introduction
+
+A brief introduction
+
+Tools
+
+Tools you need to install on your machine
+
+Development Machine Setup
+
+Development machine setup for this project
+
+Accounts
+
+Accounts you will need access to
+
+
+
+
+
+Work Hours:
+
+The team works from 10 am onwards. Timing is flexible and we encourage at least 5 hours of overlap in all team members working hours. 
+
+Communication
+
+The team is using Slack for communication. We are also responsive on our Arbisoft email ids. 
+
+Important Meetings
+
+Below is the table of important events with their timing.
+
+Meeting
+
+Time
+
+Required
+
+Daily Standup
+
+11:00 am to 10:15 am
+
+Yes
+
+Daily Checkout 
+
+05:00 pm to 05:15 pm
+
+Yes
+
+Client Check-in 1
+
+07:00 pm to 08:00 pm Tuesday
+
+Yes
+
+Client Check-in 2
+
+07:00 pm to 08:00 pm Thursday
+
+Yes
+
+Retrospective Meeting
+
+05:00 pm to 06:00 pm every 30th
+
+Yes
+
+Tools and Technologies
+
+Please install the following tools in order to proceed with the development
+
+Tool
+
+Version
+
+Required
+
+Visual Studio
+
+*
+
+Yes
+
+Node.js
+
+Preferably latest stable
+
+Yes
+
+Redis 
+
+Preferably latest stable
+
+Yes
+
+Global Protect
+
+*
+
+Optional
+
+
+
+
+
+Development Environment
+
+All developers should have the tools mentioned above installed on their machines.
+
+Git command-line configuration
+
+Make sure you have configured your user with Git. This information will be used by Git.
+
+git config --global user.name "Your Fullname"
+git config --global user.email "Your Email address"
+
+Windows users should use Git bash for a better command-line experience.
+
+If you are not well-versed in Git then you can read the tutorial
+
+Connecting to GitHub using SSH
+
+Refer to this link to set up SSH for your GitHub account.
+
+Clone the application
+
+Clone the application using the following command. We are showing private backend repo for the example.
+
+git clone https://github.com/bracesondemand/private-backend.git
+git fetch && git checkout development
+
+Create a .env file and get its content from here
+
+Building the application
+
+To build the application please run the following command.
+
+yarn install
+yarn start
+
+Now use http://localhost:3000 to access the application in the browser. 
+
+Accounts
+
+For a new team member, we need access to the following services.
+
+Service
+
+Details
+
+Required
+
+Jira 
+
+In order to get tasks assigned and work on the tickets
+
+Yes
+
+GitHub
+
+Member should get a github invite for the respective repo 
+
+Yes
+
+AWS 
+
+Nice to have IAM role or root user access of AWS console incase we need to manipulate any service. 
+
+No
+
+Bracesondemand
+
+User should have an account on qa.bracesondemand.com Eg. test@bracesondemand.compwd: dev@12345678
+
+Optional
+
+
+
+Development Process
+
+The application is developed using a modified Feature model. Developers cannot commit to the development or master branch. All features are developed in feature branches. the development branch is used as the base branch for rebasing any feature branch. In case any hotfix is needed, the master branch is used to create a hotfix branch. 
+
+Your machine should have a folder structure like the following:
+
+|-- arbisoft
+    |-- bracesondemand
+    |   |-- private-backend
+    |   |-- private-frontend
+    |   |-- public-cms-backend
+    |   |-- public-cms-frontend
+    |   |-- ui
+
+Commit Template and Branches
+
+Set up local git commit template at arbisoft/bracesondemand/
+
+How to setup the commit template
+
+Template Filename: .commit-template
+
+:gitmoji: <title>
+
+<empty-line>
+
+Ticket: https://bracesondemand.atlassian.net/browse/BRAC-000 
+
+# Notes
+
+# -
+
+Commit Title must follow <gitmoji> TICKET-NO: one-liner description
+
+Examples:
+
+:bug: BRAC-123 fixes some table 
+
+:sparkles: BRAC-123 implements new feature
+
+
+
+The branch Name must follow  <dev-name>/ticket-no-one-liner
+
+Examples:
+
+haniya/BRAC-111-fixes-something
+haniya/BRAC-999-something-fixed
+
+
+
+Software Architecture
+
+We built the application using the MVC Architecture style.
+
+Architecture Diagram
+
+Here is a high-level architecture diagram showing the major components consisting our application.
+
+
+
+Technologies
+
+The list of technologies we will use to build the application is as follows:
+
+Technology
+
+Purpose
+
+Version
+
+JavaScript Library
+
+React js- Client Side
+
+16.9
+
+PostgreSQL
+
+Database
+
+*
+
+JavaScript Framework
+
+Node js- Server Side
+
+>=12
+
+Redis
+
+In Memory Data storage
+
+4.5
+
+Non-functional Requirements
+
+Non-functional requirements for the project are:
+
+Quality Attribute
+
+Description
+
+Target
+
+Performance
+
+Our response time is optimized but not super because our system is designed for a specific type of users, orthodontists in US, using 3D printers (Formlabs, SprintRay)
+
+2 seconds
+
+Auditability
+
+We have maintained user facing error messgaes and error log files 
+
+error.log, exceptions.log
+
+Reliability
+
+Our system is reliable and has never shut down due to unknow error/crashes. In case we need to redeploy, we can go live under a minute.
+
+Recovery time: less than a minute
+
+Usability
+
+Our application is an easy to use, user friendly web app. Designers have designed very carefully so that doctors can start the printing experience rightaway. 
+
+Browsers: Chrome, IE, FirefoxDesktop:  1920×1080
+
+Mobile: 414×896
+
+Code Review Process
+
+At Bracesondemand, we use code reviews to maintain the quality of our code and products.
+
+Code reviewers should look at:
+
+Functionality: Does the code behave as the author likely intended? Is the way the code behaves well for its users?
+
+Complexity: Could the code be made simpler? Would another developer be able to easily understand and use this code when they come across it in the future?
+
+Tests: Does the code have correct and well-designed automated tests?
+
+Naming: Did the developer choose clear names for variables, classes, methods, etc.?
+
+Comments: Are the comments clear and useful?
+
+Documentation: Did the developer also update relevant documentation?
+
+See How To Do A Code Review for more information.
+
+Picking the Best Reviewers
+
+In general, you want to find the best reviewers you can who are capable of responding to your review within a reasonable period of time and directly working on the code base with you.
+
+In-Person Reviews (and Pair Programming)
+
+If you pair-programmed a piece of code with somebody who was qualified to do a good code review on it, then that code is considered reviewed.
+
+You can also do in-person code reviews where the reviewer asks questions and the developer of the change speaks only when spoken to.
+
+
+
+Release and Deployment
+
+At Bracesondemand, we have a pretty straightforward deployment and release system. Our releases are documented on GitHub releases. As we are in the maintenance phase, we do not have very frequent releases. 
+
+
+
+Frontend Deployment:
+
+
+
+Backend Deployment:
