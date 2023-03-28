@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CI/CD Deployment Documentation</title>
+    <link rel="stylesheet" href="./assets/css/dev-ops.css">
+</head>
+
+<body>
+    <h1>CI/CD Deployment Documentation</h1>
+
+    <h2>Overview</h2>
+
+    <p>This documentation outlines the process of using CircleCI for deploying a private frontend and uploading builds
+        to S3. The CI/CD pipeline consists of the following stages: building, testing, deploying, and releasing. The
+        frontend is hosted on S3, and updates are pushed via CircleCI.</p>
+
+    <h2>Prerequisites</h2>
+
+    <p>Before starting, make sure you have the following:</p>
+
+    <ul>
+        <li>A CircleCI account with access to the GitHub repository for the frontend.</li>
+    </ul>
+
+    <h2>Deployment Process</h2>
+
+    <p>The CI/CD pipeline follows these steps:</p>
+
+    <ol>
+        <li>When changes are pushed to the repository, CircleCI runs the test defined in the `config.yml` file.</li>
+        <li>CircleCI waits for manual approval</li>
+        <li>Once a CircleCI job is manualy approved. It starts building and deployment.</li>
+        <li>The deployment process uploads the build to the S3 bucket using the AWS CLI.</li>
+        <li>The release process invalidate the CloundFront of the private frontend.</li>
+    </ol>
+    <figure>
+        <img src="./assets/images/frontend-deployment-flow.png" class='center' alt="flow diagram" />
+        <figcaption style='text-align: center;margin-top: 5px;'>Figure 1: Deployment Process Diagram</figcaption>
+    </figure>
+
+    <h2>Security</h2>
+
+    <p>The following security measures are implemented:</p>
+
+    <ul>
+        <li>AWS credentials are encrypted and stored in CircleCI's environment variables.</li>
+        <li>HTTPS is used to encrypt traffic between the frontend and the user's browser.</li>
+
+    </ul>
+
+    <h2>SSL Certificates - Backend Server</h2>
+
+    <p>To auto-update SSL on a Windows server, We are using a Let's Encrypt client <a
+            href="https://www.win-acme.com/">WinAcme</a> on our server. We are using Windows Task Scheduler that runs
+        the Let's Encrypt client's renewal command.</p>
+
+    <h2>SSL Certificates - Frontend Server</h2>
+        We are using  <a
+        href="https://aws.amazon.com/certificate-manager/">AWS ACM (CERTIFICATE MANAGER)</a> to handle SSL certificates on our frontend domains.
+    <h2>Reverse Proxy - Backend Server</h2>
+    <p>We are using Windows IIS Manager to implement reverse proxy functionality in windows server.</p>
+    <figure>
+        <img src="./assets/images/reverse-proxy-windows.png" class='center' alt="flow diagram" />
+        <figcaption style='text-align: center;margin-top: 5px;'>Figure 1: Reverse Proxy</figcaption>
+    </figure>
+
+    <h2>AWS Identity Center (Single Sign-on)</h2>
+    <p>We are using AWS Identity Center. It's is a cloud-based service that makes it easy to centrally manage access to multiple AWS accounts and business applications. With AWS SSO, you can set up single sign-on for your entire organization, allowing your users to access all the applications they need with a single set of credentials.
+
+        
+    </p>
+
+</body>
+
+</html>

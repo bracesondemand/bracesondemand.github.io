@@ -11,6 +11,7 @@ This contains
 5. Deployment and Release
 6. Technical debt reduction https://bracesondemand.github.io/tech-debt
 7. Retrospective meeting notes https://bracesondemand.github.io/retro
+8. DevOps Documentation https://bracesondemand.github.io/dev-ops
 
 TODO:
 API documentation guide 
